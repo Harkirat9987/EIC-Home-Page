@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Export Inspection Council — Ensuring Safety & Quality of Food Exports</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ── CSS VARIABLES ─────────────────────────────────────────── */
+:root {
+  --eic-dark:   #003B6F;
+  --eic-mid:    #1565A7;
+  --eic-light:  #1976D2;
+  --eic-accent: #0097A7;
+  --eic-gold:   #F5A623;
+  --eic-green:  #2E7D32;
+  --bg-strip:   #EBF4FB;
+  --bg-section: #F5F9FD;
+  --text-dark:  #1A2B3C;
+  --text-mid:   #3A506B;
+  --text-light: #6B8CAE;
+  --white:      #FFFFFF;
+  --border:     #C7DFF0;
+  --shadow:     0 4px 24px rgba(0,59,111,0.10);
+  --shadow-lg:  0 8px 40px rgba(0,59,111,0.16);
+  --radius:     10px;
+  --radius-sm:  6px;
+}
+
+/* ── RESET ──────────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Noto Sans',sans-serif;color:var(--text-dark);background:#fff;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+img{max-width:100%;display:block}
+button{cursor:pointer;font-family:inherit;border:none;background:none}
+
+/* ── UTILITY ─────────────────────────────────────────────────── */
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.section-title{font-size:1.6rem;font-weight:700;color:var(--eic-dark);margin-bottom:6px}
+.section-sub{font-size:.92rem;color:var(--text-mid);margin-bottom:28px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--eic-mid);color:#fff;padding:10px 22px;border-radius:var(--radius-sm);font-size:.9rem;font-weight:600;transition:.2s;border:2px solid var(--eic-mid)}
+.btn-primary:hover{background:var(--eic-dark);border-color:var(--eic-dark);transform:translateY(-1px)}
+.btn-outline{display:inline-flex;align-items:center;gap:6px;background:transparent;color:var(--eic-mid);padding:9px 20px;border-radius:var(--radius-sm);font-size:.88rem;font-weight:600;border:2px solid var(--eic-mid);transition:.2s}
+.btn-outline:hover{background:var(--eic-mid);color:#fff}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;padding:3px 10px;border-radius:20px;background:var(--bg-strip);color:var(--eic-mid)}
+
+/* ═══════════════════════════════════════════════════════════════
+   1. TOP UTILITY BAR
+═══════════════════════════════════════════════════════════════ */
+#utility-bar{
+  background:var(--eic-dark);
+  color:#fff;
+  font-size:.78rem;
+  padding:5px 0;
+  border-bottom:2px solid var(--eic-mid);
+}
+.utility-inner{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;
+}
+.utility-left{display:flex;align-items:center;gap:14px}
+.utility-left a{color:rgba(255,255,255,.85);font-size:.75rem;transition:.2s}
+.utility-left a:hover{color:#fff}
+.utility-skip{
+  background:rgba(255,255,255,.15);padding:2px 10px;border-radius:3px;font-size:.75rem;color:rgba(255,255,255,.9);
+}
+.utility-right{display:flex;align-items:center;gap:14px}
+.utility-right a{color:rgba(255,255,255,.8);display:flex;align-items:center;gap:4px;font-size:.75rem;transition:.2s}
+.utility-right a:hover{color:#fff}
+.gov-emblem{display:flex;align-items:center;gap:8px}
+.gov-emblem svg{width:22px;height:22px;opacity:.9}
+.gov-hindi{font-family:'Noto Sans Devanagari',sans-serif;font-size:.82rem;font-weight:600;color:var(--eic-gold)}
+
+/* ═══════════════════════════════════════════════════════════════
+   2. PRIMARY NAV HEADER
+═══════════════════════════════════════════════════════════════ */
+#main-header{
+  background:#fff;
+  box-shadow:0 2px 16px rgba(0,59,111,0.12);
+  position:sticky;top:0;z-index:1000;
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:16px;
+}
+.brand{display:flex;align-items:center;gap:14px}
+.brand-logo{
+  width:56px;height:56px;border-radius:50%;background:var(--eic-dark);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  border:3px solid var(--eic-gold);
+}
+.brand-logo svg{width:34px;height:34px;fill:#fff}
+.brand-text h1{font-size:1.05rem;font-weight:700;color:var(--eic-dark);line-height:1.2}
+.brand-text h1 span{display:block;font-family:'Noto Sans Devanagari',sans-serif;font-size:.88rem;font-weight:700;color:var(--eic-mid)}
+.brand-text p{font-size:.72rem;color:var(--text-mid);font-style:italic}
+.main-nav{display:flex;align-items:center;gap:4px}
+.main-nav a{
+  padding:8px 14px;border-radius:var(--radius-sm);font-size:.88rem;font-weight:500;
+  color:var(--text-dark);transition:.2s;white-space:nowrap;
+}
+.main-nav a:hover,.main-nav a.active{background:var(--bg-strip);color:var(--eic-mid)}
+.nav-login{
+  background:var(--eic-mid);color:#fff!important;padding:8px 20px!important;
+  border-radius:var(--radius-sm);font-weight:600!important;transition:.2s!important;
+}
+.nav-login:hover{background:var(--eic-dark)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:8px}
+.hamburger span{width:22px;height:2px;background:var(--eic-dark);border-radius:2px;transition:.3s}
+
+/* ═══════════════════════════════════════════════════════════════
+   NEWS TICKER
+═══════════════════════════════════════════════════════════════ */
+#news-ticker{
+  background:var(--eic-mid);color:#fff;padding:7px 0;
+  border-bottom:1px solid rgba(255,255,255,.2);
+}
+.ticker-inner{display:flex;align-items:center;gap:0;overflow:hidden}
+.ticker-label{
+  background:var(--eic-gold);color:var(--eic-dark);font-size:.78rem;font-weight:700;
+  padding:3px 14px;flex-shrink:0;margin-right:16px;border-radius:0 3px 3px 0;
+  white-space:nowrap;
+}
+.ticker-track{display:flex;gap:0;animation:ticker 28s linear infinite;white-space:nowrap}
+.ticker-track:hover{animation-play-state:paused}
+.ticker-item{font-size:.8rem;padding-right:60px}
+.ticker-item::before{content:"●";margin-right:8px;opacity:.6}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker-view-all{
+  flex-shrink:0;margin-left:auto;font-size:.78rem;font-weight:600;
+  background:rgba(255,255,255,.2);padding:3px 12px;border-radius:3px;color:#fff;
+  white-space:nowrap;margin-left:16px;transition:.2s;
+}
+.ticker-view-all:hover{background:rgba(255,255,255,.35)}
+
+/* ═══════════════════════════════════════════════════════════════
+   3. HERO SECTION
+═══════════════════════════════════════════════════════════════ */
+#hero{
+  background:linear-gradient(135deg,var(--eic-dark) 0%,var(--eic-mid) 55%,#1a8ab5 100%);
+  position:relative;overflow:hidden;min-height:500px;
+}
+.hero-bg-pattern{
+  position:absolute;inset:0;
+  background-image:
+    radial-gradient(circle at 80% 50%,rgba(255,255,255,.06) 0%,transparent 60%),
+    repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(255,255,255,.02) 40px,rgba(255,255,255,.02) 80px);
+  pointer-events:none;
+}
+.hero-inner{
+  display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+  padding:52px 0;position:relative;z-index:1;
+}
+.hero-content{}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.12);color:rgba(255,255,255,.9);
+  font-size:.78rem;font-weight:600;padding:5px 14px;border-radius:20px;
+  margin-bottom:16px;border:1px solid rgba(255,255,255,.2);
+  letter-spacing:.5px;text-transform:uppercase;
+}
+.hero-title{
+  font-size:2.1rem;font-weight:700;color:#fff;line-height:1.25;
+  margin-bottom:16px;
+}
+.hero-title em{color:var(--eic-gold);font-style:normal}
+.hero-desc{
+  font-size:.95rem;color:rgba(255,255,255,.85);line-height:1.7;
+  margin-bottom:28px;max-width:500px;
+}
+.hero-cta-primary{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.hero-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--eic-gold);color:var(--eic-dark);
+  padding:12px 24px;border-radius:var(--radius-sm);font-size:.92rem;font-weight:700;
+  transition:.25s;box-shadow:0 4px 16px rgba(0,0,0,.25);
+}
+.hero-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.3);background:#e89a10}
+.hero-btn.secondary{background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.4)}
+.hero-btn.secondary:hover{background:rgba(255,255,255,.25)}
+.hero-links{display:flex;flex-wrap:wrap;gap:8px}
+.hero-link{
+  display:inline-flex;align-items:center;gap:6px;
+  color:rgba(255,255,255,.85);font-size:.84rem;font-weight:500;
+  padding:6px 14px;border-radius:20px;border:1px solid rgba(255,255,255,.25);
+  transition:.2s;background:rgba(255,255,255,.08);
+}
+.hero-link:hover{background:rgba(255,255,255,.2);color:#fff}
+.hero-link svg{width:14px;height:14px;opacity:.8}
+
+/* Hero image panel */
+.hero-visual{position:relative}
+.hero-carousel{
+  border-radius:14px;overflow:hidden;
+  box-shadow:0 16px 48px rgba(0,0,0,.3);
+  border:2px solid rgba(255,255,255,.2);
+  aspect-ratio:16/10;background:#1a4c8c;
+}
+.carousel-slide{
+  width:100%;height:100%;display:none;
+  background:linear-gradient(135deg,#1a4c8c,#0d6e8c);
+  position:relative;align-items:flex-end;
+}
+.carousel-slide.active{display:flex}
+.carousel-img-placeholder{
+  width:100%;height:100%;
+  background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.01));
+  display:flex;align-items:center;justify-content:center;
+}
+.carousel-img-placeholder svg{width:80px;height:80px;opacity:.2;fill:#fff}
+.carousel-caption{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(transparent,rgba(0,0,0,.65));
+  padding:32px 16px 14px;
+  font-size:.78rem;color:rgba(255,255,255,.9);line-height:1.4;
+}
+.carousel-caption strong{display:block;font-size:.82rem;color:#fff;margin-bottom:2px}
+.carousel-dots{
+  display:flex;gap:6px;justify-content:center;margin-top:12px;
+}
+.carousel-dot{
+  width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);
+  cursor:pointer;transition:.2s;border:none;
+}
+.carousel-dot.active{background:#fff;width:20px;border-radius:4px}
+
+/* AI Assistant badge */
+.ai-badge{
+  position:absolute;bottom:-16px;left:-16px;
+  background:#fff;border-radius:12px;padding:10px 14px;
+  box-shadow:0 8px 24px rgba(0,59,111,.2);
+  display:flex;align-items:center;gap:10px;
+  border:1px solid var(--border);
+  min-width:200px;z-index:10;
+}
+.ai-avatar{
+  width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(135deg,var(--eic-mid),var(--eic-accent));
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.ai-avatar svg{width:18px;height:18px;fill:#fff}
+.ai-text{font-size:.78rem;color:var(--text-dark)}
+.ai-text strong{display:block;font-size:.82rem;color:var(--eic-dark)}
+.ai-pulse{
+  width:10px;height:10px;border-radius:50%;background:#4CAF50;
+  position:absolute;top:8px;right:8px;
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(76,175,80,.4)}50%{box-shadow:0 0 0 6px rgba(76,175,80,0)}}
+
+/* ═══════════════════════════════════════════════════════════════
+   4. EXPORT CERTIFICATION TABS
+═══════════════════════════════════════════════════════════════ */
+#commodities{background:var(--bg-section);padding:60px 0}
+.tab-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.tab-btn{
+  padding:10px 22px;border-radius:var(--radius-sm);font-size:.88rem;font-weight:600;
+  color:var(--text-mid);border:2px solid var(--border);background:#fff;
+  transition:.25s;cursor:pointer;
+}
+.tab-btn.active,.tab-btn:hover{background:var(--eic-mid);color:#fff;border-color:var(--eic-mid)}
+.tab-panel{display:none}
+.tab-panel.active{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
+.commodity-card{
+  background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);
+  padding:18px 14px;text-align:center;cursor:pointer;transition:.25s;
+  box-shadow:var(--shadow);
+}
+.commodity-card:hover{border-color:var(--eic-mid);box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+.commodity-icon{
+  width:52px;height:52px;margin:0 auto 10px;border-radius:50%;
+  background:var(--bg-strip);display:flex;align-items:center;justify-content:center;
+}
+.commodity-icon svg{width:26px;height:26px}
+.commodity-name{font-size:.84rem;font-weight:600;color:var(--text-dark);line-height:1.3}
+
+/* ═══════════════════════════════════════════════════════════════
+   5. ONLINE SERVICES GRID
+═══════════════════════════════════════════════════════════════ */
+#services{background:#fff;padding:60px 0}
+.services-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+}
+.service-card{
+  border:1.5px solid var(--border);border-radius:var(--radius);
+  padding:28px 22px;transition:.3s;cursor:pointer;
+  background:#fff;position:relative;overflow:hidden;
+}
+.service-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--eic-mid),var(--eic-accent));
+  transform:scaleX(0);transform-origin:left;transition:.3s;
+}
+.service-card:hover{box-shadow:var(--shadow-lg);border-color:var(--eic-mid);transform:translateY(-4px)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{
+  width:60px;height:60px;border-radius:14px;
+  background:var(--bg-strip);display:flex;align-items:center;justify-content:center;
+  margin-bottom:16px;transition:.3s;
+}
+.service-card:hover .service-icon{background:var(--eic-mid)}
+.service-card:hover .service-icon svg{stroke:#fff!important;fill:none!important}
+.service-icon svg{width:28px;height:28px;stroke:var(--eic-mid);fill:none;stroke-width:1.8}
+.service-title{font-size:1rem;font-weight:700;color:var(--eic-dark);margin-bottom:8px}
+.service-desc{font-size:.84rem;color:var(--text-mid);line-height:1.6;margin-bottom:18px}
+.service-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.service-portal{
+  background:var(--eic-mid);color:#fff;padding:7px 16px;
+  border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;transition:.2s;
+}
+.service-portal:hover{background:var(--eic-dark)}
+.service-learn{font-size:.82rem;color:var(--eic-mid);font-weight:600;display:flex;align-items:center;gap:4px}
+.service-learn:hover{color:var(--eic-dark)}
+/* India badge */
+.india-badge{
+  position:absolute;top:12px;right:12px;
+  background:linear-gradient(135deg,#FF9933,#fff,#138808);
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.5rem;font-weight:700;text-align:center;
+  border:2px solid var(--border);overflow:hidden;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   6. CERTIFICATE TRACKER
+═══════════════════════════════════════════════════════════════ */
+#tracker{
+  background:linear-gradient(135deg,var(--eic-dark) 0%,var(--eic-mid) 100%);
+  padding:52px 0;
+}
+.tracker-inner{max-width:780px;margin:0 auto;text-align:center}
+.tracker-inner .section-title{color:#fff}
+.tracker-inner .section-sub{color:rgba(255,255,255,.8);margin-bottom:32px}
+.tracker-form{
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  border-radius:12px;padding:24px;backdrop-filter:blur(8px);
+}
+.tracker-row{display:flex;gap:12px;flex-wrap:wrap}
+.tracker-select{
+  flex:0 0 200px;padding:12px 16px;border-radius:var(--radius-sm);
+  border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);
+  color:#fff;font-size:.9rem;font-family:inherit;outline:none;
+}
+.tracker-select option{background:var(--eic-dark);color:#fff}
+.tracker-input{
+  flex:1;min-width:200px;padding:12px 16px;border-radius:var(--radius-sm);
+  border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);
+  color:#fff;font-size:.9rem;font-family:inherit;outline:none;
+}
+.tracker-input::placeholder{color:rgba(255,255,255,.55)}
+.tracker-input:focus,.tracker-select:focus{border-color:#fff;background:rgba(255,255,255,.2)}
+.tracker-submit{
+  background:var(--eic-gold);color:var(--eic-dark);padding:12px 24px;
+  border-radius:var(--radius-sm);font-size:.9rem;font-weight:700;
+  transition:.2s;white-space:nowrap;
+}
+.tracker-submit:hover{background:#e89a10;transform:translateY(-1px)}
+.tracker-qr{
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  color:rgba(255,255,255,.7);font-size:.8rem;margin-top:12px;
+}
+.tracker-qr svg{width:16px;height:16px}
+
+/* ═══════════════════════════════════════════════════════════════
+   7. DOCUMENTS REQUIRED
+═══════════════════════════════════════════════════════════════ */
+#documents{background:var(--bg-section);padding:60px 0}
+.doc-layout{display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:start}
+.doc-select-wrap{
+  background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);
+  padding:16px;box-shadow:var(--shadow);
+}
+.doc-select-label{font-size:.82rem;font-weight:600;color:var(--text-mid);margin-bottom:8px}
+.doc-select{
+  width:100%;padding:10px 12px;border-radius:var(--radius-sm);
+  border:1.5px solid var(--border);font-size:.88rem;font-family:inherit;
+  color:var(--text-dark);background:#fff;outline:none;cursor:pointer;
+}
+.doc-select:focus{border-color:var(--eic-mid)}
+.doc-table-wrap{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.doc-table{width:100%;border-collapse:collapse}
+.doc-table thead{background:var(--eic-dark)}
+.doc-table th{color:#fff;padding:12px 16px;text-align:left;font-size:.84rem;font-weight:600}
+.doc-table tbody tr{border-bottom:1px solid var(--border);transition:.2s}
+.doc-table tbody tr:hover{background:var(--bg-strip)}
+.doc-table tbody tr:last-child{border-bottom:none}
+.doc-table td{padding:12px 16px;font-size:.84rem;color:var(--text-dark);vertical-align:top}
+.doc-table td:first-child{font-weight:600;color:var(--eic-dark);width:220px}
+.doc-expand{
+  background:var(--bg-strip);border:1px solid var(--border);border-radius:4px;
+  padding:2px 8px;font-size:.75rem;color:var(--eic-mid);font-weight:600;cursor:pointer;
+  margin-left:8px;transition:.2s;
+}
+.doc-expand:hover{background:var(--eic-mid);color:#fff;border-color:var(--eic-mid)}
+.doc-detail{display:none;margin-top:8px;padding:10px 12px;background:var(--bg-strip);border-radius:6px;border-left:3px solid var(--eic-mid)}
+.doc-detail.open{display:block}
+.doc-detail li{font-size:.82rem;color:var(--text-mid);padding:3px 0;line-height:1.5}
+.doc-detail li::before{content:"›";margin-right:6px;color:var(--eic-mid);font-weight:700}
+
+/* ═══════════════════════════════════════════════════════════════
+   8. VIDEO GALLERY
+═══════════════════════════════════════════════════════════════ */
+#videos{background:#fff;padding:52px 0}
+.video-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.video-card{
+  border-radius:var(--radius);overflow:hidden;cursor:pointer;
+  box-shadow:var(--shadow);border:1.5px solid var(--border);
+  transition:.3s;background:var(--eic-dark);
+}
+.video-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+.video-thumb{
+  aspect-ratio:16/9;background:linear-gradient(135deg,#1a4c8c,#0d6e8c);
+  display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+}
+.video-thumb::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(transparent 60%,rgba(0,0,0,.5));
+}
+.play-btn{
+  width:52px;height:52px;border-radius:50%;
+  background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;
+  z-index:1;transition:.3s;box-shadow:0 4px 16px rgba(0,0,0,.3);
+}
+.video-card:hover .play-btn{background:#fff;transform:scale(1.1)}
+.play-btn svg{width:20px;height:20px;fill:var(--eic-dark);margin-left:3px}
+.video-info{
+  padding:12px 14px;background:#fff;
+}
+.video-info h4{font-size:.88rem;font-weight:600;color:var(--eic-dark)}
+.video-info p{font-size:.78rem;color:var(--text-light);margin-top:2px}
+
+/* ═══════════════════════════════════════════════════════════════
+   9. STATISTICS BAR
+═══════════════════════════════════════════════════════════════ */
+#statistics{
+  background:var(--eic-dark);
+  padding:52px 0;position:relative;overflow:hidden;
+}
+#statistics::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.stats-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:40px;
+  position:relative;z-index:1;
+}
+.stat-item{text-align:center;padding:20px}
+.stat-item+.stat-item{border-left:1px solid rgba(255,255,255,.15)}
+.stat-number{
+  font-size:2.8rem;font-weight:700;color:var(--eic-gold);
+  line-height:1;margin-bottom:8px;
+  font-family:'Crimson Pro',serif;
+}
+.stat-label{font-size:.9rem;color:rgba(255,255,255,.85);line-height:1.5;max-width:200px;margin:0 auto}
+.stat-source{
+  text-align:center;margin-top:32px;font-size:.78rem;
+  color:rgba(255,255,255,.45);position:relative;z-index:1;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   10. QUICK ACCESS BAR
+═══════════════════════════════════════════════════════════════ */
+#quick-access{background:var(--bg-section);padding:48px 0}
+.quick-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:16px;
+}
+.quick-tile{
+  background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);
+  padding:20px 14px;text-align:center;cursor:pointer;transition:.3s;
+  box-shadow:var(--shadow);
+}
+.quick-tile:hover{background:var(--eic-mid);border-color:var(--eic-mid);transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.quick-tile:hover .quick-icon{background:rgba(255,255,255,.15)}
+.quick-tile:hover .quick-icon svg{stroke:#fff!important}
+.quick-tile:hover .quick-label{color:#fff}
+.quick-tile:hover .quick-sub{color:rgba(255,255,255,.75)}
+.quick-icon{
+  width:48px;height:48px;border-radius:12px;
+  background:var(--bg-strip);margin:0 auto 10px;
+  display:flex;align-items:center;justify-content:center;transition:.3s;
+}
+.quick-icon svg{width:24px;height:24px;stroke:var(--eic-mid);fill:none;stroke-width:1.8;transition:.3s}
+.quick-label{font-size:.84rem;font-weight:600;color:var(--text-dark);line-height:1.3;transition:.3s}
+.quick-sub{font-size:.72rem;color:var(--text-light);margin-top:4px;transition:.3s}
+
+/* ═══════════════════════════════════════════════════════════════
+   11. PUBLICATIONS & UPDATES
+═══════════════════════════════════════════════════════════════ */
+#publications{background:#fff;padding:60px 0}
+.pub-tabs{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:28px;overflow-x:auto}
+.pub-tab{
+  padding:10px 20px;font-size:.86rem;font-weight:600;color:var(--text-mid);
+  border-bottom:3px solid transparent;cursor:pointer;transition:.2s;
+  white-space:nowrap;margin-bottom:-2px;
+}
+.pub-tab.active,.pub-tab:hover{color:var(--eic-mid);border-bottom-color:var(--eic-mid)}
+.pub-panel{display:none}
+.pub-panel.active{display:block}
+.pub-list{display:flex;flex-direction:column;gap:0}
+.pub-item{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:14px 0;border-bottom:1px solid var(--border);
+  transition:.2s;cursor:pointer;
+}
+.pub-item:last-child{border-bottom:none}
+.pub-item:hover{padding-left:6px}
+.pub-item:hover .pub-title{color:var(--eic-mid)}
+.pub-dot{
+  width:8px;height:8px;border-radius:50%;background:var(--eic-mid);
+  flex-shrink:0;margin-top:6px;
+}
+.pub-content{flex:1}
+.pub-title{font-size:.88rem;color:var(--text-dark);line-height:1.5;transition:.2s}
+.pub-meta{display:flex;align-items:center;gap:10px;margin-top:4px}
+.pub-date{font-size:.75rem;color:var(--text-light)}
+.pub-badge{
+  font-size:.7rem;padding:1px 7px;border-radius:10px;
+  background:var(--bg-strip);color:var(--eic-mid);font-weight:600;
+}
+.pub-link{font-size:.75rem;color:var(--eic-accent);display:flex;align-items:center;gap:3px}
+.pub-view-all{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:20px;color:var(--eic-mid);font-size:.9rem;font-weight:600;
+  padding:9px 20px;border:2px solid var(--eic-mid);border-radius:var(--radius-sm);
+  transition:.2s;
+}
+.pub-view-all:hover{background:var(--eic-mid);color:#fff}
+
+/* ═══════════════════════════════════════════════════════════════
+   12. EXTERNAL LINKS / PARTNERS
+═══════════════════════════════════════════════════════════════ */
+#partners{background:var(--bg-section);padding:44px 0}
+.partners-title{text-align:center;font-size:.82rem;font-weight:600;color:var(--text-mid);letter-spacing:.8px;text-transform:uppercase;margin-bottom:28px}
+.partners-row{
+  display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;gap:32px;
+}
+.partner-logo{
+  display:flex;align-items:center;justify-content:center;
+  height:64px;padding:10px 20px;
+  background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);
+  box-shadow:var(--shadow);cursor:pointer;transition:.25s;min-width:120px;
+}
+.partner-logo:hover{box-shadow:var(--shadow-lg);border-color:var(--eic-mid);transform:translateY(-2px)}
+.partner-logo span{font-size:.9rem;font-weight:700;color:var(--eic-dark)}
+
+/* ═══════════════════════════════════════════════════════════════
+   13. FOOTER
+═══════════════════════════════════════════════════════════════ */
+#footer{background:var(--eic-dark);color:rgba(255,255,255,.8);padding:48px 0 0}
+.footer-grid{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;
+  padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.12);
+}
+.footer-brand h3{
+  font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:4px;
+}
+.footer-brand p{font-size:.8rem;line-height:1.7;color:rgba(255,255,255,.65);margin-top:10px}
+.footer-address{
+  display:flex;align-items:flex-start;gap:8px;margin-top:12px;
+  font-size:.8rem;color:rgba(255,255,255,.6);line-height:1.6;
+}
+.footer-address svg{width:16px;height:16px;flex-shrink:0;margin-top:2px;stroke:var(--eic-gold);fill:none;stroke-width:2}
+.footer-social{display:flex;gap:10px;margin-top:16px}
+.social-btn{
+  width:36px;height:36px;border-radius:8px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s;
+}
+.social-btn:hover{background:var(--eic-mid);border-color:var(--eic-mid)}
+.social-btn svg{width:16px;height:16px;fill:#fff}
+.footer-col h4{font-size:.9rem;font-weight:600;color:#fff;margin-bottom:14px}
+.footer-col ul li{margin-bottom:8px}
+.footer-col ul li a{font-size:.82rem;color:rgba(255,255,255,.6);transition:.2s;display:flex;align-items:center;gap:6px}
+.footer-col ul li a::before{content:"›";color:var(--eic-gold);font-weight:700}
+.footer-col ul li a:hover{color:#fff;padding-left:4px}
+.footer-bottom{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 0;flex-wrap:wrap;gap:8px;
+  font-size:.75rem;color:rgba(255,255,255,.45);
+}
+.footer-bottom a{color:rgba(255,255,255,.5);margin:0 6px;transition:.2s}
+.footer-bottom a:hover{color:#fff}
+.footer-visitor{display:flex;align-items:center;gap:6px}
+.footer-visitor svg{width:14px;height:14px;stroke:var(--eic-gold);fill:none;stroke-width:2}
+.footer-nic{display:flex;align-items:center;gap:6px;font-size:.72rem;color:rgba(255,255,255,.35)}
+
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE NAV DRAWER
+═══════════════════════════════════════════════════════════════ */
+#nav-drawer{
+  position:fixed;top:0;right:0;bottom:0;width:280px;background:#fff;
+  box-shadow:-4px 0 24px rgba(0,0,0,.15);z-index:2000;
+  transform:translateX(100%);transition:.3s;overflow-y:auto;
+}
+#nav-drawer.open{transform:translateX(0)}
+.drawer-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 20px 16px;border-bottom:1px solid var(--border);
+}
+.drawer-close{
+  width:32px;height:32px;border-radius:50%;background:var(--bg-strip);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+}
+.drawer-close svg{width:16px;height:16px;stroke:var(--text-dark);fill:none;stroke-width:2}
+.drawer-nav a{
+  display:block;padding:12px 20px;font-size:.92rem;color:var(--text-dark);
+  border-bottom:1px solid var(--border);transition:.2s;font-weight:500;
+}
+.drawer-nav a:hover{background:var(--bg-strip);color:var(--eic-mid);padding-left:24px}
+.overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:1999;
+  display:none;
+}
+.overlay.show{display:block}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════════ */
+@media(max-width:1024px){
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr;gap:28px}
+  .hero-visual{order:-1}
+  .hero-title{font-size:1.6rem}
+  .ai-badge{left:50%;transform:translateX(-50%);bottom:-20px}
+  .stats-grid{grid-template-columns:1fr;gap:20px}
+  .stat-item+.stat-item{border-left:none;border-top:1px solid rgba(255,255,255,.15)}
+  .doc-layout{grid-template-columns:1fr}
+  .video-grid{grid-template-columns:repeat(2,1fr)}
+  .services-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .main-nav{display:none}
+  .hamburger{display:flex}
+  .tab-panel.active{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:480px){
+  .video-grid{grid-template-columns:1fr}
+  .hero-cta-primary{flex-direction:column}
+  .tracker-row{flex-direction:column}
+  .tracker-select{flex:none;width:100%}
+}
+
+/* ═════ ANIMATIONS ══════════════════════════════════════════ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{opacity:0;animation:fadeUp .6s ease forwards}
+.fade-up:nth-child(1){animation-delay:.05s}
+.fade-up:nth-child(2){animation-delay:.12s}
+.fade-up:nth-child(3){animation-delay:.19s}
+.fade-up:nth-child(4){animation-delay:.26s}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     1. TOP UTILITY BAR
+══════════════════════════════════════════════════════════════ -->
+<div id="utility-bar">
+  <div class="container">
+    <div class="utility-inner">
+      <div class="utility-left">
+        <div class="gov-emblem">
+          <!-- Ashoka Chakra simplified SVG -->
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="18" stroke="#F5A623" stroke-width="2" fill="none"/>
+            <circle cx="20" cy="20" r="4" fill="#F5A623"/>
+            <g stroke="#F5A623" stroke-width="1.2">
+              <line x1="20" y1="4" x2="20" y2="14"/>
+              <line x1="20" y1="26" x2="20" y2="36"/>
+              <line x1="4" y1="20" x2="14" y2="20"/>
+              <line x1="26" y1="20" x2="36" y2="20"/>
+              <line x1="8.1" y1="8.1" x2="14.9" y2="14.9"/>
+              <line x1="25.1" y1="25.1" x2="31.9" y2="31.9"/>
+              <line x1="31.9" y1="8.1" x2="25.1" y2="14.9"/>
+              <line x1="14.9" y1="25.1" x2="8.1" y2="31.9"/>
+            </g>
+          </svg>
+          <div>
+            <div style="font-size:.7rem;color:rgba(255,255,255,.7);line-height:1.1">Government of India</div>
+            <div class="gov-hindi">सत्यमेव जयते</div>
+          </div>
+        </div>
+        <span style="color:rgba(255,255,255,.3)">|</span>
+        <a href="#">Ministry of Commerce &amp; Industry | GOI</a>
+        <span style="color:rgba(255,255,255,.3)">|</span>
+        <a href="#">Department of Commerce</a>
+      </div>
+      <div class="utility-right">
+        <a href="#main" class="utility-skip">Skip to Main Content</a>
+        <a href="#">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Search
+        </a>
+        <a href="#">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+          Accessibility
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     2. PRIMARY NAVIGATION HEADER
+══════════════════════════════════════════════════════════════ -->
+<header id="main-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="#" class="brand">
+        <div class="brand-logo">
+          <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="25" cy="25" r="22" fill="none" stroke="#F5A623" stroke-width="2"/>
+            <circle cx="25" cy="25" r="5" fill="#F5A623"/>
+            <g stroke="#fff" stroke-width="1.5">
+              <line x1="25" y1="5" x2="25" y2="15"/>
+              <line x1="25" y1="35" x2="25" y2="45"/>
+              <line x1="5" y1="25" x2="15" y2="25"/>
+              <line x1="35" y1="25" x2="45" y2="25"/>
+              <line x1="10" y1="10" x2="17" y2="17"/>
+              <line x1="33" y1="33" x2="40" y2="40"/>
+              <line x1="40" y1="10" x2="33" y2="17"/>
+              <line x1="17" y1="33" x2="10" y2="40"/>
+            </g>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>
+            <span>निर्यात निरीक्षण परिषद</span>
+            Export Inspection Council
+          </h1>
+          <p>Ministry of Commerce &amp; Industry, Govt. of India</p>
+        </div>
+      </a>
+
+      <nav class="main-nav" role="navigation">
+        <a href="#" class="active">About Us</a>
+        <a href="#">Offerings</a>
+        <a href="#">Apply to EIC</a>
+        <a href="#">Publications</a>
+        <a href="#">Connect</a>
+        <a href="#" class="nav-login">Log In</a>
+      </nav>
+
+      <button class="hamburger" aria-label="Open menu" onclick="openDrawer()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- News Ticker -->
+<div id="news-ticker">
+  <div class="container">
+    <div class="ticker-inner">
+      <div class="ticker-label">NEWS &amp; EVENTS</div>
+      <div style="overflow:hidden;flex:1">
+        <div class="ticker-track">
+          <span class="ticker-item">Office Order No. 2026/02 dated 06th February 2026 (Work Order)</span>
+          <span class="ticker-item">Office Order No. 2026/03 dated 09th February 2026 (Transfer Order)</span>
+          <span class="ticker-item">Bid Corrigendum for purchase of laboratory equipment for EIA Kochi SO Mangalore laboratory</span>
+          <span class="ticker-item">Tender Notice for engaging Manpower Agency at EIA Mumbai — GeM Bid No. 2025/B/6261489</span>
+          <span class="ticker-item">Office Order No. 2026/02 dated 06th February 2026 (Work Order)</span>
+          <span class="ticker-item">Office Order No. 2026/03 dated 09th February 2026 (Transfer Order)</span>
+          <span class="ticker-item">Bid Corrigendum for purchase of laboratory equipment for EIA Kochi SO Mangalore laboratory</span>
+          <span class="ticker-item">Tender Notice for engaging Manpower Agency at EIA Mumbai — GeM Bid No. 2025/B/6261489</span>
+        </div>
+      </div>
+      <a href="#publications" class="ticker-view-all">View All →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     3. HERO SECTION
+══════════════════════════════════════════════════════════════ -->
+<section id="hero" id="main">
+  <div class="hero-bg-pattern"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <!-- LEFT: Content -->
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#F5A623"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Statutory Body under Export (QC &amp; Inspection) Act, 1963
+        </div>
+        <h1 class="hero-title">
+          Ensuring <em>Safety &amp; Quality</em> of Food Exports through Certification
+        </h1>
+        <p class="hero-desc">
+          The Export Inspection Council is responsible for quality control, inspection, and certification of Indian export products, ensuring compliance with internationally accepted standards.
+        </p>
+        <div class="hero-cta-primary">
+          <a href="#commodities" class="hero-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Notified Commodities
+          </a>
+          <a href="#" class="hero-btn secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            Certificate of Origin
+          </a>
+        </div>
+        <div class="hero-links">
+          <a href="#" class="hero-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-8 0v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg>
+            Register for EIC Services
+          </a>
+          <a href="#documents" class="hero-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            Documents Required
+          </a>
+          <a href="#services" class="hero-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            Our Services
+          </a>
+          <a href="#tracker" class="hero-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            Track / Verify Certificate
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT: Carousel -->
+      <div class="hero-visual">
+        <div class="hero-carousel" id="heroCarousel">
+          <div class="carousel-slide active">
+            <div class="carousel-img-placeholder">
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="40" r="20" fill="none" stroke="white" stroke-width="3" opacity=".3"/>
+                <rect x="20" y="65" width="60" height="25" rx="4" fill="none" stroke="white" stroke-width="3" opacity=".3"/>
+              </svg>
+            </div>
+            <div class="carousel-caption">
+              <strong>Meeting with FSVPS Delegation of Russian Federation</strong>
+              Chaired by Shri Nitin Kumar Yadav, Director (I&amp;QC), EIC &amp; Additional Secretary, Department of Commerce at Vanijya Bhawan
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-img-placeholder" style="background:linear-gradient(145deg,#0d5a8c,#0a7c9c)">
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 70 L50 20 L80 70 Z" fill="none" stroke="white" stroke-width="3" opacity=".3"/>
+                <circle cx="50" cy="55" r="12" fill="none" stroke="white" stroke-width="3" opacity=".3"/>
+              </svg>
+            </div>
+            <div class="carousel-caption">
+              <strong>Annual EIC Export Quality Conference 2026</strong>
+              Ensuring world-class standards for Indian food exports across global markets
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-img-placeholder" style="background:linear-gradient(145deg,#1a5c3c,#0d8c6c)">
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="15" y="15" width="30" height="30" rx="4" fill="none" stroke="white" stroke-width="3" opacity=".3"/>
+                <rect x="55" y="15" width="30" height="30" rx="4" fill="none" stroke="white" stroke-width="3" opacity=".3"/>
+                <rect x="15" y="55" width="30" height="30" rx="4" fill="none" stroke="white" stroke-width="3" opacity=".3"/>
+                <rect x="55" y="55" width="30" height="30" rx="4" fill="none" stroke="white" stroke-width="3" opacity=".3"/>
+              </svg>
+            </div>
+            <div class="carousel-caption">
+              <strong>New LIMS Portal Launch — EIC Laboratory Network</strong>
+              Expanding testing capabilities across 12 Export Inspection Agencies nationwide
+            </div>
+          </div>
+        </div>
+        <div class="carousel-dots">
+          <button class="carousel-dot active" onclick="goSlide(0)"></button>
+          <button class="carousel-dot" onclick="goSlide(1)"></button>
+          <button class="carousel-dot" onclick="goSlide(2)"></button>
+        </div>
+
+        <!-- AI Assistant Badge -->
+        <div class="ai-badge">
+          <div class="ai-avatar">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+          </div>
+          <div class="ai-text">
+            <strong>Hello! I'm your EIC Assistant</strong>
+            How can I help you today?
+          </div>
+          <div class="ai-pulse"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     4. EXPORT CERTIFICATION TABS
+══════════════════════════════════════════════════════════════ -->
+<section id="commodities">
+  <div class="container">
+    <h2 class="section-title">Export Certification of Notified Commodities</h2>
+    <p class="section-sub">Explore product-wise orders, notifications and executive instructions</p>
+
+    <div class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="switchTab('animal')" role="tab">🐟 Animal Origin</button>
+      <button class="tab-btn" onclick="switchTab('plant')" role="tab">🌾 Plant Origin</button>
+      <button class="tab-btn" onclick="switchTab('voluntary')" role="tab">✅ Voluntary Certification</button>
+      <button class="tab-btn" onclick="switchTab('others')" role="tab">📋 Others</button>
+    </div>
+
+    <div class="tab-panel active" id="tab-animal">
+      <div class="commodity-card fade-up"><div class="commodity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1565A7" stroke-width="1.8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4-4-1.79-4-4z"/></svg></div><div class="commodity-name">Animal Casings</div></div>
+      <div class="commodity-card fade-up"><div class="commodity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1565A7" stroke-width="1.8"><path d="M12 2l1.5 3h3.5l-2.8 2.5 1 3.5L12 9.5l-3.2 1.5 1-3.5L7 5h3.5z"/><path d="M12 9.5V22"/></svg></div><div class="commodity-name">Basmati Rice</div></div>
+      <div class="commodity-card fade-up"><div class="commodity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1565A7" stroke-width="1.8"><circle cx="12" cy="10" r="4"/><path d="M12 14v8M9 17l3-3 3 3"/></svg></div><div class="commodity-name">Black Pepper</div></div>
+      <div class="commodity-card fade-up"><div class="commodity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1565A7" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h12"/></svg></div><div class="commodity-name">Dried Fish Maws</div></div>
+      <div class="commodity-card fade-up"><div class="commodity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1565A7" stroke-width="1.8"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/></svg></div><div class="commodity-name">Food Supplements (EU &amp; UK)</div></div>
+      <div class="commodity-card fade-up"><div class="commodity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1565A7" stroke-width="1.8"><path d="M12 2C6 2 2 7 2 12s4 10 10 10 10-4.5 10-10S18 2 12 2zM7 12c0-2.76 2.24-5 5-5s5 2.24 5 5"/></svg></div><div class="commodity-name">Primary Production for Fish</div></div>
+      <div class="commodity-card fade-up"><div class="commodity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1565A7" stroke-width="1.8"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div><div class="commodity-name">Fishery Products</div></div>
+      <div class="commodity-card fade-up"><div class="commodity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1565A7" stroke-width="1.8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><div class="commodity-name">Voluntary Cert. Scheme</div></div>
+    </div>
+
+    <div class="tab-panel" id="tab-plant">
+      <div class="commodity-card fade-up"><div class="commodity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="1.8"><path d="M12 2a10 10 0 00-9 14.26L12 22l9-5.74A10 10 0 0012 2z"/></svg></div><div class="commodity-name">Basmati Rice</div></div>
+      <div class="commodity-card fade-up"><div class="commodity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="1.8"><path d="M12 22V12M12 12C12 7 7 3 3 5c4 1 6 4 9 7z"/><path d="M12 12c0-5 5-9 9-7-4 1-6 4-9 7z"/></svg></div><div class="commodity-name">Groundnuts</div></div>
+      <div class="commodity-card fade-up"><div class="commodity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="commodity-name">Honey &amp; Bee Products</div></div>
+      <div class="commodity-card fade-up"><div class="commodity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="1.8"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><div class="commodity-name">Spices &amp; Condiments</div></div>
+    </div>
+
+    <div class="tab-panel" id="tab-voluntary">
+      <div class="commodity-card fade-up"><div class="commodity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0097A7" stroke-width="1.8"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div class="commodity-name">Voluntary Certification Scheme</div></div>
+      <div class="commodity-card fade-up"><div class="commodity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0097A7" stroke-width="1.8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><div class="commodity-name">Food Supplements (EU &amp; UK)</div></div>
+    </div>
+
+    <div class="tab-panel" id="tab-others">
+      <div class="commodity-card fade-up"><div class="commodity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F57C00" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div><div class="commodity-name">Processed Foods</div></div>
+      <div class="commodity-card fade-up"><div class="commodity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F57C00" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div><div class="commodity-name">Poultry Products</div></div>
+      <div class="commodity-card fade-up"><div class="commodity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F57C00" stroke-width="1.8"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div><div class="commodity-name">Dairy Products</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     5. ONLINE SERVICES GRID
+══════════════════════════════════════════════════════════════ -->
+<section id="services">
+  <div class="container">
+    <h2 class="section-title">Online Applications for Export Inspection &amp; Certification Services</h2>
+    <p class="section-sub">EIC provides inspection, certification, laboratory, and related services to ensure compliance of notified export products.</p>
+    <div class="services-grid">
+
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="service-title">Quality Control &amp; Inspection</h3>
+        <p class="service-desc">Approval of establishments and inspection of consignments under Compulsory Wholesale Inspection (CWI).</p>
+        <div class="service-actions">
+          <a href="#" class="service-portal">Open Portal</a>
+          <a href="#" class="service-learn">Learn more →</a>
+        </div>
+      </div>
+
+      <div class="service-card fade-up" style="position:relative">
+        <div class="india-badge" title="Product of India"></div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <h3 class="service-title">Export Certification</h3>
+        <p class="service-desc">Issuance of Certificate for Export, Certificate of Inspection, Health Certificates, Non-GMO, Authenticity, etc.</p>
+        <div class="service-actions">
+          <a href="#" class="service-portal">Open Portal</a>
+          <a href="#" class="service-learn">Learn more →</a>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/></svg>
+        </div>
+        <h3 class="service-title">Laboratory Testing (LIMS)</h3>
+        <p class="service-desc">Testing of products through EIC labs and EIC recognised laboratories across the country.</p>
+        <div class="service-actions">
+          <a href="#" class="service-portal">Open Portal</a>
+          <a href="#" class="service-learn">Learn more →</a>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <h3 class="service-title">Certificate of Origin</h3>
+        <p class="service-desc">Issuance of Certificate of Origin under various trade agreements and FTAs.</p>
+        <div class="service-actions">
+          <a href="#" class="service-portal">Open Portal</a>
+          <a href="#" class="service-learn">Learn more →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     6. CERTIFICATE TRACKER
+══════════════════════════════════════════════════════════════ -->
+<section id="tracker">
+  <div class="container">
+    <div class="tracker-inner">
+      <h2 class="section-title">Track or Verify Export Certificates and Lab Reports</h2>
+      <p class="section-sub">Enter Application / Certificate Reference No. or scan the QR code in document.</p>
+      <div class="tracker-form">
+        <div class="tracker-row">
+          <select class="tracker-select" aria-label="Certificate type">
+            <option value="">-- Select Type --</option>
+            <option>Health Certificate</option>
+            <option>Certificate of Origin</option>
+            <option>Certificate for Export (CFE)</option>
+            <option>Non-GMO Certificate</option>
+            <option>Authenticity Certificate</option>
+          </select>
+          <input class="tracker-input" type="text" placeholder="Enter Application No..." aria-label="Application number"/>
+          <button class="tracker-submit">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline;vertical-align:middle;margin-right:4px"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            Verify
+          </button>
+        </div>
+        <div class="tracker-qr">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="5" y="5" width="3" height="3" fill="currentColor"/><rect x="16" y="5" width="3" height="3" fill="currentColor"/><rect x="16" y="16" width="3" height="3" fill="currentColor"/><rect x="5" y="16" width="3" height="3" fill="currentColor"/></svg>
+          Or scan the QR code from the physical certificate using your mobile camera
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     7. DOCUMENTS REQUIRED
+══════════════════════════════════════════════════════════════ -->
+<section id="documents">
+  <div class="container">
+    <h2 class="section-title">Indicative List of Documents Required</h2>
+    <p class="section-sub">Select a product to view the documents required for each activity</p>
+    <div class="doc-layout">
+      <div class="doc-select-wrap">
+        <div class="doc-select-label">Select a Product</div>
+        <select class="doc-select" aria-label="Select product" onchange="filterDocuments(this.value)">
+          <option value="fish">Fish &amp; Fishery Products</option>
+          <option value="basmati">Basmati Rice</option>
+          <option value="spices">Spices</option>
+          <option value="poultry">Poultry Products</option>
+        </select>
+      </div>
+      <div class="doc-table-wrap">
+        <table class="doc-table">
+          <thead>
+            <tr><th>Activity</th><th>Documents Required</th></tr>
+          </thead>
+          <tbody id="docTableBody">
+            <tr>
+              <td>Approval of Establishment</td>
+              <td>
+                <button class="doc-expand" onclick="toggleDoc(this)">View (+)</button>
+                <div class="doc-detail">
+                  <ul>
+                    <li>Up-to-date layout plan of establishment</li>
+                    <li>Plumbing diagram</li>
+                    <li>Organizational Chart</li>
+                    <li>Bio-data of technologists</li>
+                    <li>Legal identity of establishment</li>
+                    <li>Lease Deed, if applicable</li>
+                    <li>Potability certificate of water and ice</li>
+                    <li>HACCP Manual</li>
+                    <li>MPEDA Registration Certificate</li>
+                    <li>Consent letter — State Pollution Control Board</li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Registration of Exporter (CWI)</td>
+              <td><button class="doc-expand" onclick="toggleDoc(this)">View (+)</button><div class="doc-detail"><ul><li>Attested copy of IEC Number</li><li>Application for CWI</li><li>Undertaking &amp; Guarantee</li></ul></div></td>
+            </tr>
+            <tr>
+              <td>Application for CWI</td>
+              <td><button class="doc-expand" onclick="toggleDoc(this)">View (+)</button><div class="doc-detail"><ul><li>Completed CWI application form</li><li>Processing unit approval letter</li><li>Test reports from accredited lab</li></ul></div></td>
+            </tr>
+            <tr>
+              <td>Health Certificate</td>
+              <td><button class="doc-expand" onclick="toggleDoc(this)">View (+)</button><div class="doc-detail"><ul><li>Lab test report (within 30 days)</li><li>Packing list &amp; invoice</li><li>Phyto-sanitary / veterinary certificate</li><li>Bill of Lading / Airway Bill</li></ul></div></td>
+            </tr>
+            <tr>
+              <td>Certificate for Export by Establishment (CFE)</td>
+              <td><button class="doc-expand" onclick="toggleDoc(this)">View (+)</button><div class="doc-detail"><ul><li>Application for CFE</li><li>Establishment approval number</li><li>Batch production records</li></ul></div></td>
+            </tr>
+            <tr>
+              <td>Laboratory Testing</td>
+              <td><button class="doc-expand" onclick="toggleDoc(this)">View (+)</button><div class="doc-detail"><ul><li>Sample submission form</li><li>Description of commodity</li><li>Import country requirements</li></ul></div></td>
+            </tr>
+            <tr>
+              <td>Certificate of Origin (CoO)</td>
+              <td><button class="doc-expand" onclick="toggleDoc(this)">View (+)</button><div class="doc-detail"><ul><li>Commercial invoice</li><li>Packing list</li><li>GSP Form A (if applicable)</li><li>Declaration of origin</li></ul></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     8. VIDEO GALLERY
+══════════════════════════════════════════════════════════════ -->
+<section id="videos">
+  <div class="container">
+    <h2 class="section-title">EIC in Action</h2>
+    <p class="section-sub">Watch our informational videos on export quality, certification and inspection procedures</p>
+    <div class="video-grid">
+      <div class="video-card fade-up">
+        <div class="video-thumb">
+          <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </div>
+        <div class="video-info"><h4>EIC Video 1</h4><p>Quality Inspection Process</p></div>
+      </div>
+      <div class="video-card fade-up">
+        <div class="video-thumb" style="background:linear-gradient(135deg,#1a5c3c,#0d8c6c)">
+          <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </div>
+        <div class="video-info"><h4>EIC Video 2</h4><p>Export Certification Guide</p></div>
+      </div>
+      <div class="video-card fade-up">
+        <div class="video-thumb" style="background:linear-gradient(135deg,#5c1a1a,#8c3d0d)">
+          <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </div>
+        <div class="video-info"><h4>EIC Video 3</h4><p>Lab Testing Procedures</p></div>
+      </div>
+      <div class="video-card fade-up">
+        <div class="video-thumb" style="background:linear-gradient(135deg,#3d1a5c,#6c0d8c)">
+          <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </div>
+        <div class="video-info"><h4>EIC Video 4</h4><p>Certificate of Origin Process</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     9. STATISTICS BAR
+══════════════════════════════════════════════════════════════ -->
+<section id="statistics">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number" data-target="480000" data-suffix="Lakh+">4.8 Lakh+</div>
+        <div class="stat-label">Certificates of Origin Issued under various FTAs and trade agreements</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="24500" data-suffix="+">24,500+</div>
+        <div class="stat-label">Certificates Issued (HC, Non-GMO, Authenticity, etc.)</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="1295" data-suffix="">1,295</div>
+        <div class="stat-label">Export Establishments Approved</div>
+      </div>
+    </div>
+    <div class="stat-source">*Source: Export Inspection Council Annual Report 2022–23</div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     10. QUICK ACCESS BAR
+══════════════════════════════════════════════════════════════ -->
+<section id="quick-access">
+  <div class="container">
+    <h2 class="section-title" style="text-align:center;margin-bottom:28px">Quick Access</h2>
+    <div class="quick-grid">
+      <a href="#" class="quick-tile">
+        <div class="quick-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+        <div class="quick-label">Certificate of Origin</div>
+      </a>
+      <a href="#" class="quick-tile">
+        <div class="quick-icon"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/></svg></div>
+        <div class="quick-label">Laboratory Testing (LIMS)</div>
+      </a>
+      <a href="#" class="quick-tile">
+        <div class="quick-icon"><svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+        <div class="quick-label">e-Health Certificate</div>
+      </a>
+      <a href="#" class="quick-tile">
+        <div class="quick-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="quick-label">Traceability 2.0</div>
+        <div class="quick-sub">Visit Portal</div>
+      </a>
+      <a href="#" class="quick-tile">
+        <div class="quick-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <div class="quick-label">Online Grievance Redressal (VC)</div>
+        <div class="quick-sub">Every Friday 4–5 PM</div>
+      </a>
+      <a href="#" class="quick-tile">
+        <div class="quick-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="quick-label">Centralised Public Grievance Redress</div>
+      </a>
+      <a href="#" class="quick-tile">
+        <div class="quick-icon"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
+        <div class="quick-label">Trade CONNECT</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     11. PUBLICATIONS & UPDATES
+══════════════════════════════════════════════════════════════ -->
+<section id="publications">
+  <div class="container">
+    <h2 class="section-title">Publications &amp; Updates</h2>
+    <div class="pub-tabs" role="tablist">
+      <button class="pub-tab active" onclick="switchPub('tenders')">Tenders / Advertisements</button>
+      <button class="pub-tab" onclick="switchPub('annual')">Annual Reports</button>
+      <button class="pub-tab" onclick="switchPub('tbt')">TBT Reports</button>
+      <button class="pub-tab" onclick="switchPub('newsletter')">Manthan / E-Newsletter</button>
+      <button class="pub-tab" onclick="switchPub('orders')">Office Orders</button>
+    </div>
+
+    <div class="pub-panel active" id="pub-tenders">
+      <div class="pub-list">
+        <div class="pub-item"><div class="pub-dot"></div><div class="pub-content"><div class="pub-title">Tender Notice for engaging Manpower Agency at EIA Mumbai — GeM Bid No. 2025/B/6261489</div><div class="pub-meta"><span class="pub-date">Feb 2026</span><span class="pub-badge">Tender</span><a href="#" class="pub-link">PDF ↗</a></div></div></div>
+        <div class="pub-item"><div class="pub-dot"></div><div class="pub-content"><div class="pub-title">Bid Corrigendum No. GEM/2025/B/6261489-C-1 for GeM Bid No. 2025/B/6261489</div><div class="pub-meta"><span class="pub-date">Feb 2026</span><span class="pub-badge">Corrigendum</span><a href="#" class="pub-link">PDF ↗</a></div></div></div>
+        <div class="pub-item"><div class="pub-dot"></div><div class="pub-content"><div class="pub-title">Tender Notice for appointing Manpower Agency in EIA Kolkata through GeM</div><div class="pub-meta"><span class="pub-date">Jan 2026</span><span class="pub-badge">Tender</span><a href="#" class="pub-link">PDF ↗</a></div></div></div>
+        <div class="pub-item"><div class="pub-dot"></div><div class="pub-content"><div class="pub-title">Response to Pre-Bid queries against Tender No. GEM/2023/B/4395628 — NTB Web Portal</div><div class="pub-meta"><span class="pub-date">Jan 2026</span><span class="pub-badge">Pre-Bid</span><a href="#" class="pub-link">PDF ↗</a></div></div></div>
+        <div class="pub-item"><div class="pub-dot"></div><div class="pub-content"><div class="pub-title">Centralized purchase of laboratory equipment (Chemical) by EIAs Mumbai — Tender No. 2023-24/40-46</div><div class="pub-meta"><span class="pub-date">Dec 2025</span><span class="pub-badge">Tender</span><a href="#" class="pub-link">PDF ↗</a></div></div></div>
+      </div>
+      <a href="#" class="pub-view-all">Read More →</a>
+    </div>
+
+    <div class="pub-panel" id="pub-annual">
+      <div class="pub-list">
+        <div class="pub-item"><div class="pub-dot"></div><div class="pub-content"><div class="pub-title">EIC Annual Report 2022–23</div><div class="pub-meta"><span class="pub-date">2023</span><span class="pub-badge">Annual Report</span><a href="#" class="pub-link">PDF ↗</a></div></div></div>
+        <div class="pub-item"><div class="pub-dot"></div><div class="pub-content"><div class="pub-title">EIC Annual Report 2021–22</div><div class="pub-meta"><span class="pub-date">2022</span><span class="pub-badge">Annual Report</span><a href="#" class="pub-link">PDF ↗</a></div></div></div>
+        <div class="pub-item"><div class="pub-dot"></div><div class="pub-content"><div class="pub-title">EIC Annual Report 2020–21</div><div class="pub-meta"><span class="pub-date">2021</span><span class="pub-badge">Annual Report</span><a href="#" class="pub-link">PDF ↗</a></div></div></div>
+      </div>
+      <a href="#" class="pub-view-all">View All Reports →</a>
+    </div>
+
+    <div class="pub-panel" id="pub-tbt">
+      <div class="pub-list">
+        <div class="pub-item"><div class="pub-dot"></div><div class="pub-content"><div class="pub-title">Gap Assessment Study on India's Food Testing Laboratories for Exports</div><div class="pub-meta"><span class="pub-date">2025</span><span class="pub-badge">TBT</span><a href="#" class="pub-link">PDF ↗</a></div></div></div>
+        <div class="pub-item"><div class="pub-dot"></div><div class="pub-content"><div class="pub-title">TBT Notification Analysis — EU Market Access 2025</div><div class="pub-meta"><span class="pub-date">2025</span><span class="pub-badge">TBT</span><a href="#" class="pub-link">PDF ↗</a></div></div></div>
+      </div>
+      <a href="#" class="pub-view-all">View All TBT Reports →</a>
+    </div>
+
+    <div class="pub-panel" id="pub-newsletter">
+      <div class="pub-list">
+        <div class="pub-item"><div class="pub-dot"></div><div class="pub-content"><div class="pub-title">Manthan E-Newsletter — December 2025 Issue</div><div class="pub-meta"><span class="pub-date">Dec 2025</span><span class="pub-badge">Newsletter</span><a href="#" class="pub-link">PDF ↗</a></div></div></div>
+        <div class="pub-item"><div class="pub-dot"></div><div class="pub-content"><div class="pub-title">Manthan E-Newsletter — September 2025 Issue</div><div class="pub-meta"><span class="pub-date">Sep 2025</span><span class="pub-badge">Newsletter</span><a href="#" class="pub-link">PDF ↗</a></div></div></div>
+      </div>
+      <a href="#" class="pub-view-all">All Issues →</a>
+    </div>
+
+    <div class="pub-panel" id="pub-orders">
+      <div class="pub-list">
+        <div class="pub-item"><div class="pub-dot"></div><div class="pub-content"><div class="pub-title">Office Order No. 2026/02 dated 06th February 2026 (Work Order)</div><div class="pub-meta"><span class="pub-date">06 Feb 2026</span><span class="pub-badge">Office Order</span><a href="#" class="pub-link">PDF ↗</a></div></div></div>
+        <div class="pub-item"><div class="pub-dot"></div><div class="pub-content"><div class="pub-title">Office Order No. 2026/03 dated 09th February 2026 (Transfer Order)</div><div class="pub-meta"><span class="pub-date">09 Feb 2026</span><span class="pub-badge">Transfer</span><a href="#" class="pub-link">PDF ↗</a></div></div></div>
+      </div>
+      <a href="#" class="pub-view-all">All Office Orders →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     12. EXTERNAL LINKS / PARTNERS
+══════════════════════════════════════════════════════════════ -->
+<section id="partners">
+  <div class="container">
+    <div class="partners-title">External Links &amp; Partner Organisations</div>
+    <div class="partners-row">
+      <a href="#" class="partner-logo"><span>MPEDA</span></a>
+      <a href="#" class="partner-logo"><span>APEDA</span></a>
+      <a href="#" class="partner-logo"><span>WOAH</span></a>
+      <a href="#" class="partner-logo"><span>FSSAI</span></a>
+      <a href="#" class="partner-logo"><span>DGFT</span></a>
+      <a href="#" class="partner-logo"><span>ICEGATE</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     13. FOOTER
+══════════════════════════════════════════════════════════════ -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Export Inspection Council (EIC)</h3>
+        <p style="font-size:.78rem;color:rgba(255,255,255,.5);font-style:italic">Ministry of Commerce &amp; Industry, Govt. of India</p>
+        <div class="footer-address">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>2nd Floor, B Plate, Block I, Commercial Complex,<br>East Kidwai Nagar, New Delhi — 110023</span>
+        </div>
+        <div class="footer-social">
+          <a href="#" class="social-btn" title="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="#" class="social-btn" title="Twitter/X"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+          <a href="#" class="social-btn" title="YouTube"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58a2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#003B6F"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>About EIC</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Mandate</a></li>
+          <li><a href="#">EIC Network (EIAs)</a></li>
+          <li><a href="#">Annual Reports</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Quality Control &amp; Inspection</a></li>
+          <li><a href="#">Export Certification</a></li>
+          <li><a href="#">Laboratory Testing</a></li>
+          <li><a href="#">Certificate of Origin</a></li>
+          <li><a href="#">Traceability 2.0</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Policies &amp; Help</h4>
+        <ul>
+          <li><a href="#">Website Policies</a></li>
+          <li><a href="#">Sitemap</a></li>
+          <li><a href="#">Help</a></li>
+          <li><a href="#">Feedback</a></li>
+          <li><a href="#">Grievance Redressal</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>
+        <span>Designed &amp; Developed by: <strong style="color:rgba(255,255,255,.6)">Logicsoft</strong></span>
+        <span style="margin:0 12px;opacity:.3">|</span>
+        <a href="#">About Us</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Website Policies</a>
+        <a href="#">Sitemap</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+        <div class="footer-visitor">
+          <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          <span>Total Visitors: <strong style="color:rgba(255,255,255,.7)">2,199,193</strong></span>
+        </div>
+        <div style="color:rgba(255,255,255,.4);font-size:.72rem">Last Updated: 28 Jan 2026</div>
+        <div>© 2026 Export Inspection Council. All rights reserved.</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Mobile Nav Drawer -->
+<div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+<div id="nav-drawer">
+  <div class="drawer-head">
+    <div style="font-weight:700;color:var(--eic-dark);font-size:.95rem">EIC Menu</div>
+    <button class="drawer-close" onclick="closeDrawer()">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="drawer-nav">
+    <a href="#">About Us</a>
+    <a href="#">Offerings</a>
+    <a href="#">Apply to EIC</a>
+    <a href="#">Publications</a>
+    <a href="#">Connect</a>
+    <a href="#" style="background:var(--eic-mid);color:#fff;font-weight:600">Log In</a>
+  </nav>
+</div>
+
+<script>
+/* ── HERO CAROUSEL ─────────────────────────────────────── */
+let currentSlide = 0;
+const slides = document.querySelectorAll('.carousel-slide');
+const dots   = document.querySelectorAll('.carousel-dot');
+let autoTimer;
+
+function goSlide(n){
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = n;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+function nextSlide(){
+  goSlide((currentSlide+1) % slides.length);
+}
+function startAuto(){ autoTimer = setInterval(nextSlide, 5000); }
+function stopAuto(){ clearInterval(autoTimer); }
+startAuto();
+document.querySelector('.hero-carousel').addEventListener('mouseenter', stopAuto);
+document.querySelector('.hero-carousel').addEventListener('mouseleave', startAuto);
+
+/* ── COMMODITY TABS ──────────────────────────────────────── */
+function switchTab(id){
+  document.querySelectorAll('.tab-btn').forEach((b,i)=>{
+    b.classList.toggle('active', ['animal','plant','voluntary','others'][i]===id);
+  });
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+}
+
+/* ── PUBLICATIONS TABS ───────────────────────────────────── */
+function switchPub(id){
+  document.querySelectorAll('.pub-tab').forEach((b,i)=>{
+    b.classList.toggle('active', ['tenders','annual','tbt','newsletter','orders'][i]===id);
+  });
+  document.querySelectorAll('.pub-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('pub-'+id).classList.add('active');
+}
+
+/* ── DOC EXPAND ──────────────────────────────────────────── */
+function toggleDoc(btn){
+  const detail = btn.nextElementSibling;
+  const open   = detail.classList.toggle('open');
+  btn.textContent = open ? 'Hide (−)' : 'View (+)';
+}
+
+/* ── FILTER DOCS ─────────────────────────────────────────── */
+function filterDocuments(val){ /* placeholder — content stays same */ }
+
+/* ── MOBILE DRAWER ───────────────────────────────────────── */
+function openDrawer(){
+  document.getElementById('nav-drawer').classList.add('open');
+  document.getElementById('overlay').classList.add('show');
+}
+function closeDrawer(){
+  document.getElementById('nav-drawer').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+}
+
+/* ── STAT COUNTER ANIMATION ──────────────────────────────── */
+function animateCounters(){
+  document.querySelectorAll('.stat-number').forEach(el=>{
+    const finalText = el.textContent;
+    el.setAttribute('data-final', finalText);
+    let start = 0;
+    const duration = 2000;
+    const step = 16;
+    const steps = duration / step;
+    let count = 0;
+    const timer = setInterval(()=>{
+      count++;
+      const progress = Math.min(count / steps, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      if(progress < 1){
+        if(finalText.includes('Lakh')){
+          el.textContent = (4.8 * eased).toFixed(1) + ' Lakh+';
+        } else if(finalText.includes('24')){
+          el.textContent = Math.round(24500 * eased).toLocaleString() + '+';
+        } else {
+          el.textContent = Math.round(1295 * eased).toLocaleString();
+        }
+      } else {
+        el.textContent = finalText;
+        clearInterval(timer);
+      }
+    }, step);
+  });
+}
+
+/* ── INTERSECTION OBSERVER ───────────────────────────────── */
+const statsObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ animateCounters(); statsObserver.disconnect(); }
+  });
+},{threshold:.3});
+statsObserver.observe(document.getElementById('statistics'));
+
+/* ── SCROLL ANIMATION ────────────────────────────────────── */
+const fadeObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.style.opacity='1';
+  });
+},{threshold:.1});
+document.querySelectorAll('.fade-up').forEach(el=>fadeObserver.observe(el));
+</script>
+</body>
+</html>
